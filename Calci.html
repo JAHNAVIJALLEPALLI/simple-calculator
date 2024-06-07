@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>calculator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <h1 style="text-align: center;",>CALCULATOR</h1> -->
+    <div class="container">
+      <fieldset id="container">
+        <form name="calculator">
+          <input id="display" type="text" name="display" readonly />
+          <br />
+          <input class="button digits" type="button" value="7" onclick="appendToDisplay('7')" />
+          <input class="button digits" type="button" value="8" onclick="appendToDisplay('8')" />
+          <input class="button digits" type="button" value="9" onclick="appendToDisplay('9')" />
+          <input class="button mathButtons" type="button" value="+" onclick="appendToDisplay(' + ')" />
+          <br />
+          <input class="button digits" type="button" value="4" onclick="appendToDisplay('4')" />
+          <input class="button digits" type="button" value="5" onclick="appendToDisplay('5')" />
+          <input class="button digits" type="button" value="6" onclick="appendToDisplay('6')" />
+          <input class="button mathButtons" type="button" value="-" onclick="appendToDisplay(' - ')" />
+          <br />
+          <input class="button digits" type="button" value="1" onclick="appendToDisplay('1')" />
+          <input class="button digits" type="button" value="2" onclick="appendToDisplay('2')" />
+          <input class="button digits" type="button" value="3" onclick="appendToDisplay('3')" />
+          <input class="button mathButtons" type="button" value="x" onclick="appendToDisplay(' * ')" />
+          <br />
+          <input id="clearButton" class="button" type="button" value="C" onclick="clearDisplay()" />
+          <input class="button digits" type="button" value="0" onclick="appendToDisplay('0')" />
+          <input class="button mathButtons" type="button" value="=" onclick="calculateResult()" />
+          <input class="button mathButtons" type="button" value="/" onclick="appendToDisplay(' / ')" />
+        </form>
+      </fieldset>
+    </div>
+    <script>
+      function appendToDisplay(value) {
+        document.calculator.display.value += value;
+      }
+
+      function clearDisplay() {
+        document.calculator.display.value = '';
+      }
+
+      function calculateResult() {
+        try {
+          const result = eval(document.calculator.display.value);
+          document.calculator.display.value = result;
+        } catch (error) {
+          document.calculator.display.value = 'Error';
+        }
+      }
+    </script>
+  </body>
+</html>
